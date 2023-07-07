@@ -1,4 +1,4 @@
-Character-level language model trained on 2 material science books(1695508 characters)
+Character-level language model trained on 2 material science books(1695508 characters).
 
 This model was trained for about 10 hours on a one a100 GPU.
 
@@ -15,7 +15,31 @@ pip install -r requirements.txt
 - n_layers = 8
 - batch_size = 512
 
-
+# Architectrue:
+Nothing too fancy 
+```Transformer(
+  (token_embedding): Embedding(104, 384)
+  (positional_encoding): PositionalEncoding()
+  (layers): ModuleList(
+    (0-7): 8 x TransformerBlock(
+      (multihead): CausalSelfAttention(
+        (c_attn): Linear(in_features=384, out_features=1152, bias=True)
+        (c_proj): Linear(in_features=384, out_features=384, bias=True)
+        (attn_dropout): Dropout(p=0.2, inplace=False)
+        (resid_dropout): Dropout(p=0.2, inplace=False)
+      )
+      (layer_norm1): RMSNorm()
+      (layer_norm2): RMSNorm()
+      (ffd): Sequential(
+        (0): Linear(in_features=384, out_features=1536, bias=True)
+        (1): GELU(approximate='none')
+        (2): Linear(in_features=1536, out_features=384, bias=True)
+        (3): Dropout(p=0.2, inplace=False)
+      )
+    )
+  )
+  (ffd): Linear(in_features=384, out_features=104, bias=True)
+```
 
 # Further Improvements:
 - Right now the data quality is very bad. It could be improved a lot. 
