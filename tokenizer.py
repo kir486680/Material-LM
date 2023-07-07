@@ -1,5 +1,6 @@
 from tokenizers import Tokenizer, models, pre_tokenizers, decoders
 import json 
+
 class CustomTokenizer:
     def __init__(self, chars=None, json_file=None):
         if json_file:

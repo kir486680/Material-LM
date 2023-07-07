@@ -3,7 +3,6 @@ import torch
 import math
 import os 
 
-
 class TransformerConfig():
     def __init__(self, vocab_size = 104, emb_dim = 384, seq_len=256, n_heads=6, n_layers=8):
         self.vocab_size = vocab_size
